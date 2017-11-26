@@ -2,15 +2,16 @@ package com.sofiwares.youtubesearcher
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
-import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.sofiwares.youtubesearcher.view.SearchActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import android.widget.AutoCompleteTextView
+import android.support.test.espresso.matcher.ViewMatchers.*
 
 
 /**
@@ -21,6 +22,8 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SearchActivityTest {
 
+    private val typedString = "something"
+
     @Rule @JvmField
     val mActivityRule = ActivityTestRule(SearchActivity::class.java)
 
@@ -30,7 +33,8 @@ class SearchActivityTest {
     }
 
     @Test
-    fun testSearch() {
+    fun testSearchTypeInActionBar() {
         onView(withId(R.id.search)).perform(click())
+        onView(isAssignableFrom(AutoCompleteTextView::class.java)).perform(typeText(typedString))
     }
 }

@@ -1,5 +1,6 @@
 package com.sofiwares.youtubesearcher.youtube
 
+import android.support.annotation.WorkerThread
 import android.text.TextUtils
 import android.util.Log
 import com.google.api.client.googleapis.json.GoogleJsonResponseException
@@ -20,15 +21,16 @@ import kotlin.collections.ArrayList
 class YouTubeAPIManager {
 
     companion object {
+        val MAX_SEARCH_RESULTS = 10L
         private val APP_NAME = "YoutubeSearcher"
         private val API_KEY = "AIzaSyBsk2xDHFx0xXt_Mi_iIHl6WNksvZ8y4q0"
-        private val MAX_SEARCH_RESULTS = 10L
         private val ISO_8601_DEFAULT = "PT0S"
 
         private var youtube: YouTube = YouTube.Builder(NetHttpTransport(), JacksonFactory(), HttpRequestInitializer {})
                 .setApplicationName(APP_NAME).build()
     }
 
+    @WorkerThread
     fun search(query: String): ContentListViewModel.SearchTaskResult {
         try {
             // Define the API request for retrieving search results.
