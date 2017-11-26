@@ -1,3 +1,4 @@
-# YoutubeSearcher Android app
-[<img src="https://imgur.com/6P5UbqH" width=250>](https://imgur.com/6P5UbqH)
-[<img src="https://imgur.com/3PmBoSH" alt="Subscriptions" width="250" />](https://imgur.com/3PmBoSH)
+YoutubeSearcher Android app
+===========================
+<img height="256" src="https://i.imgur.com/6P5UbqH.png"/>
+<img height="256" src="https://i.imgur.com/3PmBoSH.png"/>
