@@ -16,8 +16,10 @@ object DurationFormatter: IFormatter<String> {
         // The format prefix of ISO-8601 may vary between: PT#H#M#S / P#DT#H#M#S
         time = if (value.startsWith("PT"))
             value.substring(2)
+        else if (value.startsWith("P"))
+            value.substring(1).replace("T","")
         else
-            value.substring(2).trim('T')
+            return "00:00"
 
         for (i in indexes.indices) {
             val index = time.indexOf(indexes[i])
