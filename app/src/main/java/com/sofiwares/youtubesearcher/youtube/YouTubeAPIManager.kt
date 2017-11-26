@@ -7,7 +7,7 @@ import com.google.api.client.http.HttpRequestInitializer
 import com.google.api.client.http.javanet.NetHttpTransport
 import com.google.api.client.json.jackson2.JacksonFactory
 import com.google.api.services.youtube.YouTube
-import com.sofiwares.youtubesearcher.ErrorID
+import com.sofiwares.youtubesearcher.util.ErrorID
 import com.sofiwares.youtubesearcher.model.VideoModel
 import com.sofiwares.youtubesearcher.viewmodel.VideoListViewModel
 import java.io.IOException

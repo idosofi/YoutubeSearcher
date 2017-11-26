@@ -3,7 +3,7 @@ package com.sofiwares.youtubesearcher.viewmodel
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.os.AsyncTask
-import com.sofiwares.youtubesearcher.ErrorID
+import com.sofiwares.youtubesearcher.util.ErrorID
 import com.sofiwares.youtubesearcher.model.VideoModel
 import com.sofiwares.youtubesearcher.youtube.YouTubeAPIManager
 

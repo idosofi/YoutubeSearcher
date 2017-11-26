@@ -1,4 +1,4 @@
-package com.sofiwares.youtubesearcher
+package com.sofiwares.youtubesearcher.util
 
 
 /**

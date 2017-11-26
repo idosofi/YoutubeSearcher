@@ -2,7 +2,7 @@ package com.sofiwares.youtubesearcher.view
 
 import android.app.AlertDialog
 import android.content.Context
-import com.sofiwares.youtubesearcher.ErrorID
+import com.sofiwares.youtubesearcher.util.ErrorID
 import com.sofiwares.youtubesearcher.R
 
 /**

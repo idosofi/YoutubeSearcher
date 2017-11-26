@@ -17,7 +17,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
-import com.sofiwares.youtubesearcher.ErrorID
+import com.sofiwares.youtubesearcher.util.ErrorID
 import com.sofiwares.youtubesearcher.R
 import com.sofiwares.youtubesearcher.model.VideoModel
 import com.sofiwares.youtubesearcher.viewmodel.VideoListViewModel

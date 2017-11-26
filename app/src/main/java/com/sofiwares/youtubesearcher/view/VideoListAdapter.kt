@@ -4,8 +4,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.sofiwares.youtubesearcher.DurationFormatter
-import com.sofiwares.youtubesearcher.PublishedDateFormatter
+import com.sofiwares.youtubesearcher.util.DurationFormatter
+import com.sofiwares.youtubesearcher.util.PublishedDateFormatter
 import com.sofiwares.youtubesearcher.R
 import com.sofiwares.youtubesearcher.model.VideoModel
 
