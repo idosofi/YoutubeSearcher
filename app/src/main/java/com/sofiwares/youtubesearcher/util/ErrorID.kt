@@ -6,6 +6,5 @@ package com.sofiwares.youtubesearcher.util
 enum class ErrorID {
     NO_NETWORK,
     GENERAL,
-    WAITING,
     NONE
 }
