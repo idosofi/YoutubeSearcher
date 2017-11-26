@@ -16,6 +16,7 @@ import android.transition.TransitionManager
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
+import android.widget.SearchView
 import com.sofiwares.youtubesearcher.ErrorID
 import com.sofiwares.youtubesearcher.R
 import com.sofiwares.youtubesearcher.model.VideoModel
@@ -78,6 +79,14 @@ class SearchActivity : AppCompatActivity() {
 
         searchView.imeOptions = EditorInfo.IME_ACTION_SEARCH
 
+    searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(p0: String?): Boolean {
+            searchView.onActionViewCollapsed()
+            return false
+        }
+        override fun onQueryTextChange(p0: String?): Boolean { return true }
+    })
+
         return true
     }
 
@@ -93,13 +102,9 @@ class SearchActivity : AppCompatActivity() {
             val model = ViewModelProviders.of(this).get(VideoListViewModel::class.java)
             model.searchYoutube(query)
 
-
-            // Load the animation like this
+            // Start animation
             val anim = AnimationUtils.loadAnimation(this, R.anim.rotate)
-
-            // Start the animation like this
             logoImageView.startAnimation(anim)
-
         }
     }
 
@@ -120,6 +125,9 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun handleError(errorID: ErrorID) {
+        if (mCurrentScene == SearchActivityScene.WELCOME) {
+            logoImageView.clearAnimation()
+        }
         ErrorDialogGenerator.showDialog(this, errorID)
     }
 
