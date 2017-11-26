@@ -11,7 +11,6 @@ import com.sofiwares.youtubesearcher.ErrorID
 import com.sofiwares.youtubesearcher.model.VideoModel
 import com.sofiwares.youtubesearcher.viewmodel.VideoListViewModel
 import java.io.IOException
-import java.util.*
 import kotlin.collections.ArrayList
 
 /**

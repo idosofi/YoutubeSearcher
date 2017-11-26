@@ -13,7 +13,6 @@ import android.content.Intent
 import android.net.Uri
 import android.transition.Scene
 import android.transition.TransitionManager
-import android.transition.Visibility
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo

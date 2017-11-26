@@ -1,16 +1,11 @@
 package com.sofiwares.youtubesearcher.viewmodel
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.os.AsyncTask
 import com.sofiwares.youtubesearcher.ErrorID
 import com.sofiwares.youtubesearcher.model.VideoModel
 import com.sofiwares.youtubesearcher.youtube.YouTubeAPIManager
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
 
 
 /**
