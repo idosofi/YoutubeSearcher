@@ -63,7 +63,7 @@ class YouTubeAPIManager {
                         videoId = if (isPlaylist) singleVideo.id.playlistId else singleVideo.id.videoId))
             }
 
-            val videos = youtube.videos().list("id,contentDetails")
+            val videos = youtube.videos().list("contentDetails")
             videos.key = API_KEY
             videos.fields = "items(contentDetails/duration)"
             val videoIdArray = arrayListOf<String>()

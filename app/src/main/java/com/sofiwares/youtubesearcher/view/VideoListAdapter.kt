@@ -30,7 +30,12 @@ class VideoListAdapter(private var mDataSet: ArrayList<VideoModel>) : RecyclerVi
         val isPlaylist = mDataSet[position].isPlaylist
 
         holder?.title?.text = mDataSet[position].title
-        holder?.duration?.text = if (isPlaylist) "PlayList" else DurationFormatter.format(mDataSet[position].duration)
+        holder?.duration?.text =
+                when {
+                    isPlaylist -> "PlayList"
+                    DurationFormatter.format(mDataSet[position].duration) == "00:00" -> "Live"
+                    else -> DurationFormatter.format(mDataSet[position].duration)
+                }
         holder?.publishedDate?.text = PublishedDateFormatter.format(mDataSet[position].publishedDate)
 
         // Load the image using glide library
