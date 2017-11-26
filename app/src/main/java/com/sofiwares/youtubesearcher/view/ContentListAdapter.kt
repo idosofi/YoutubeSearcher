@@ -7,26 +7,26 @@ import com.bumptech.glide.Glide
 import com.sofiwares.youtubesearcher.util.DurationFormatter
 import com.sofiwares.youtubesearcher.util.PublishedDateFormatter
 import com.sofiwares.youtubesearcher.R
-import com.sofiwares.youtubesearcher.model.VideoModel
+import com.sofiwares.youtubesearcher.model.ContentModel
 
 /**
  * Created by Ido Sofi on 11/24/2017.
  */
-class VideoListAdapter(private var mDataSet: ArrayList<VideoModel>) : RecyclerView.Adapter<VideoViewHolder>() {
+class ContentListAdapter(private var mDataSet: ArrayList<ContentModel>) : RecyclerView.Adapter<ContentViewHolder>() {
 
     override fun getItemCount(): Int {
         return mDataSet.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): VideoViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ContentViewHolder {
         // create a new view
         val v = LayoutInflater.from(parent?.context)
                 .inflate(R.layout.video_card_view_item, parent, false)
 
-        return VideoViewHolder(v)
+        return ContentViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: VideoViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ContentViewHolder?, position: Int) {
         val isPlaylist = mDataSet[position].isPlaylist
 
         holder?.title?.text = mDataSet[position].title
@@ -42,7 +42,7 @@ class VideoListAdapter(private var mDataSet: ArrayList<VideoModel>) : RecyclerVi
         Glide.with(holder?.itemView?.context).load(mDataSet[position].thumbNailURL).into(holder?.thumbNailImage)
     }
 
-    fun loadNewItems(items: ArrayList<VideoModel>?) {
+    fun loadNewItems(items: ArrayList<ContentModel>?) {
         if (items != null && items != mDataSet) {
             mDataSet.clear()
             mDataSet.addAll(items)

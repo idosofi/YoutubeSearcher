@@ -9,7 +9,7 @@ import com.sofiwares.youtubesearcher.R
 /**
  * Created by Ido Sofi on 11/24/2017.
  */
-class VideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ContentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var thumbNailImage: ImageView = itemView.findViewById(R.id.thumbnail)
     var title: TextView = itemView.findViewById(R.id.title)
     var publishedDate: TextView = itemView.findViewById(R.id.publishDate)

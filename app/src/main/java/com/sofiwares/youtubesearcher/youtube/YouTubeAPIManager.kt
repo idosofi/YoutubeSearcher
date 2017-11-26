@@ -7,9 +7,10 @@ import com.google.api.client.http.HttpRequestInitializer
 import com.google.api.client.http.javanet.NetHttpTransport
 import com.google.api.client.json.jackson2.JacksonFactory
 import com.google.api.services.youtube.YouTube
+import com.sofiwares.youtubesearcher.data.Content
 import com.sofiwares.youtubesearcher.util.ErrorID
-import com.sofiwares.youtubesearcher.model.VideoModel
-import com.sofiwares.youtubesearcher.viewmodel.VideoListViewModel
+import com.sofiwares.youtubesearcher.model.ContentModel
+import com.sofiwares.youtubesearcher.viewmodel.ContentListViewModel
 import java.io.IOException
 import kotlin.collections.ArrayList
 
@@ -28,7 +29,7 @@ class YouTubeAPIManager {
                 .setApplicationName(APP_NAME).build()
     }
 
-    fun search(query: String): VideoListViewModel.SearchTaskResult {
+    fun search(query: String): ContentListViewModel.SearchTaskResult {
         try {
             // Define the API request for retrieving search results.
             val search = youtube.search().list("id,snippet")
@@ -47,27 +48,27 @@ class YouTubeAPIManager {
             val searchResponse = search.execute()
             val searchResultListIterator = searchResponse.items.iterator()
 
-            val data = ArrayList<VideoModel>()
+            val data = ArrayList<ContentModel>()
 
             while (searchResultListIterator.hasNext()) {
                 val singleVideo = searchResultListIterator.next()
                 val isPlaylist = (singleVideo.id.kind == "youtube#playlist")
                 val thumbnail = singleVideo.snippet.thumbnails.default
 
-                data.add(VideoModel(
+                data.add(Content(
                         title = singleVideo.snippet.title,
                         thumbNailURL = thumbnail.url,
                         duration = ISO_8601_DEFAULT,
                         isPlaylist = isPlaylist,
                         publishedDate = singleVideo.snippet.publishedAt,
-                        videoId = if (isPlaylist) singleVideo.id.playlistId else singleVideo.id.videoId))
+                        contentId = if (isPlaylist) singleVideo.id.playlistId else singleVideo.id.videoId))
             }
 
             val videos = youtube.videos().list("contentDetails")
             videos.key = API_KEY
             videos.fields = "items(contentDetails/duration)"
             val videoIdArray = arrayListOf<String>()
-            data.map { videoIdArray.add(it.videoId) }
+            data.map { videoIdArray.add(it.contentId) }
             videos.id = TextUtils.join(",", videoIdArray)
 
             val videosResponse = videos.execute()
@@ -80,18 +81,18 @@ class YouTubeAPIManager {
                 }
             }
 
-            return VideoListViewModel.SearchTaskResult(data)
+            return ContentListViewModel.SearchTaskResult(data)
 
         } catch (e: GoogleJsonResponseException) {
             Log.e("YouTubeAPIManager","There was a service error: " + e.details.code + " : "
                     + e.details.message)
-            return VideoListViewModel.SearchTaskResult(errorID =  ErrorID.GENERAL)
+            return ContentListViewModel.SearchTaskResult(errorID =  ErrorID.GENERAL)
         } catch (e: IOException) {
             Log.e("YouTubeAPIManager","There was an IO error: " + e.cause + " : " + e.message)
-            return VideoListViewModel.SearchTaskResult(errorID = ErrorID.NO_NETWORK)
+            return ContentListViewModel.SearchTaskResult(errorID = ErrorID.NO_NETWORK)
         } catch (t: Throwable) {
             t.printStackTrace()
-            return VideoListViewModel.SearchTaskResult(errorID = ErrorID.GENERAL)
+            return ContentListViewModel.SearchTaskResult(errorID = ErrorID.GENERAL)
         }
     }
 }

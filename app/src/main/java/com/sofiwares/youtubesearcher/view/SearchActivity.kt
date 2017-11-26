@@ -19,8 +19,8 @@ import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
 import com.sofiwares.youtubesearcher.util.ErrorID
 import com.sofiwares.youtubesearcher.R
-import com.sofiwares.youtubesearcher.model.VideoModel
-import com.sofiwares.youtubesearcher.viewmodel.VideoListViewModel
+import com.sofiwares.youtubesearcher.model.ContentModel
+import com.sofiwares.youtubesearcher.viewmodel.ContentListViewModel
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.hello_scene.*
 import kotlinx.android.synthetic.main.video_list_scene.*
@@ -32,15 +32,15 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var mVideoListScene: Scene
 
     private var mRecyclerView: RecyclerView? = null
-    private  var mAdapter: VideoListAdapter? = null
+    private  var mAdapter: ContentListAdapter? = null
     private lateinit var mLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        val model = ViewModelProviders.of(this).get(VideoListViewModel::class.java)
-        model.videoList.observe(this, Observer<ArrayList<VideoModel>> { newList ->
+        val model = ViewModelProviders.of(this).get(ContentListViewModel::class.java)
+        model.videoList.observe(this, Observer<ArrayList<ContentModel>> { newList ->
             // videoList has changed, update the UI
             if (model.videoList.value!!.size > 0)
                 transitionTo(SearchActivityScene.VIDEO_LIST)
@@ -62,7 +62,7 @@ class SearchActivity : AppCompatActivity() {
             mRecyclerView?.layoutManager = mLayoutManager
 
             // specify an adapter (see also next example)
-            mAdapter = VideoListAdapter(model.videoList.value!!)
+            mAdapter = ContentListAdapter(model.videoList.value!!)
             mRecyclerView?.adapter = mAdapter
         })
     }
@@ -99,7 +99,7 @@ class SearchActivity : AppCompatActivity() {
             val query = intent.getStringExtra(SearchManager.QUERY)
 
             //use the query to search our data
-            val model = ViewModelProviders.of(this).get(VideoListViewModel::class.java)
+            val model = ViewModelProviders.of(this).get(ContentListViewModel::class.java)
             model.searchYoutube(query)
 
             if (mCurrentScene == SearchActivityScene.WELCOME) {
@@ -134,10 +134,10 @@ class SearchActivity : AppCompatActivity() {
     }
 
     fun onVideoClick(v: View) {
-        val model = ViewModelProviders.of(this).get(VideoListViewModel::class.java)
+        val model = ViewModelProviders.of(this).get(ContentListViewModel::class.java)
 
         val isPlaylist = model.videoList.value!![mRecyclerView?.getChildAdapterPosition(v)!!].isPlaylist
-        val id = model.videoList.value!![mRecyclerView?.getChildAdapterPosition(v)!!].videoId
+        val id = model.videoList.value!![mRecyclerView?.getChildAdapterPosition(v)!!].contentId
 
         if (isPlaylist)
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/playlist?list=$id")))

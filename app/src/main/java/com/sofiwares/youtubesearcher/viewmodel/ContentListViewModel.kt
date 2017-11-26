@@ -4,16 +4,16 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.os.AsyncTask
 import com.sofiwares.youtubesearcher.util.ErrorID
-import com.sofiwares.youtubesearcher.model.VideoModel
+import com.sofiwares.youtubesearcher.model.ContentModel
 import com.sofiwares.youtubesearcher.youtube.YouTubeAPIManager
 
 
 /**
  * Created by Ido Sofi on 11/24/2017.
  */
-class VideoListViewModel : ViewModel() {
+class ContentListViewModel : ViewModel() {
 
-    var videoList = MutableLiveData<ArrayList<VideoModel>>()
+    var videoList = MutableLiveData<ArrayList<ContentModel>>()
     var searchError = MutableLiveData<ErrorID>()
 
     init {
@@ -25,7 +25,7 @@ class VideoListViewModel : ViewModel() {
         SearchTask(videoList, searchError).execute(query)
     }
 
-    class SearchTask(private var videoList: MutableLiveData<ArrayList<VideoModel>>,
+    class SearchTask(private var videoList: MutableLiveData<ArrayList<ContentModel>>,
                      private var errorID: MutableLiveData<ErrorID>) : AsyncTask<String, Unit, SearchTaskResult>() {
 
         override fun doInBackground(vararg args: String?): SearchTaskResult {
@@ -43,6 +43,6 @@ class VideoListViewModel : ViewModel() {
         }
     }
 
-    data class SearchTaskResult(val videoList: ArrayList<VideoModel>? = null,
+    data class SearchTaskResult(val videoList: ArrayList<ContentModel>? = null,
                                 val errorID: ErrorID = ErrorID.NONE)
 }
