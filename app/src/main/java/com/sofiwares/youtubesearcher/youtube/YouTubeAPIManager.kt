@@ -21,7 +21,7 @@ class YouTubeAPIManager {
     companion object {
         private val APP_NAME = "YoutubeSearcher"
         private val API_KEY = "AIzaSyBsk2xDHFx0xXt_Mi_iIHl6WNksvZ8y4q0"
-        private val MAX_SEARCH_RESULTS = 50L
+        private val MAX_SEARCH_RESULTS = 10L
         private val ISO_8601_DEFAULT = "PT0S"
 
         private var youtube: YouTube = YouTube.Builder(NetHttpTransport(), JacksonFactory(), HttpRequestInitializer {})
@@ -37,7 +37,7 @@ class YouTubeAPIManager {
             search.q = query
 
             // Restrict the search results to only include video and playlist results
-            search.type = "video,playlist"  //TODO: CHECK PLAYLIST TUMBNAIL!!
+            search.type = "video,playlist"
 
             // To increase efficiency, only retrieve the fields that the application uses.
             search.fields = "items(snippet/title,snippet/thumbnails/default/url,snippet/publishedAt,id/kind,id/videoId,id/playlistId)"
