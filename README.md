@@ -12,4 +12,4 @@ Or to build the APK and immediately install it on a running emulator or connecte
 
 Tests
 =====
-Under Android Studio terminal, run command "gradlew test" to run tests
+Under Android Studio terminal, run command "gradlew test connectedAndroidTest" to run unit/instrumented tests

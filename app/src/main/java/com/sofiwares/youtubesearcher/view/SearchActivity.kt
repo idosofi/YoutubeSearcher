@@ -79,13 +79,13 @@ class SearchActivity : AppCompatActivity() {
 
         searchView.imeOptions = EditorInfo.IME_ACTION_SEARCH
 
-    searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-        override fun onQueryTextSubmit(p0: String?): Boolean {
-            searchView.onActionViewCollapsed()
-            return false
-        }
-        override fun onQueryTextChange(p0: String?): Boolean { return true }
-    })
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                searchView.onActionViewCollapsed()
+                return false
+            }
+            override fun onQueryTextChange(p0: String?): Boolean { return true }
+        })
 
         return true
     }
