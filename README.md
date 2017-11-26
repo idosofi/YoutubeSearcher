@@ -1,7 +1,7 @@
 YoutubeSearcher Android app
 ===========================
 <img align="center" height="256" src="https://i.imgur.com/8dR6mLc.png"/>
-A simple Android app designed to to query YouTube for videos/playlists.
+A simple Android app designed to to query YouTube for videos/playlists and play them on YouTube.
 
 Installation
 ============
