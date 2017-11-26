@@ -102,9 +102,11 @@ class SearchActivity : AppCompatActivity() {
             val model = ViewModelProviders.of(this).get(VideoListViewModel::class.java)
             model.searchYoutube(query)
 
-            // Start animation
-            val anim = AnimationUtils.loadAnimation(this, R.anim.rotate)
-            logoImageView.startAnimation(anim)
+            if (mCurrentScene == SearchActivityScene.WELCOME) {
+                // Start animation
+                val anim = AnimationUtils.loadAnimation(this, R.anim.rotate)
+                logoImageView.startAnimation(anim)
+            }
         }
     }
 
