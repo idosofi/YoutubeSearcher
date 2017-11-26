@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">YoutubeSearcher</string>
+    <string name="search_title">Search Youtube</string>
+    <string name="search_hint">Search for video/playlist</string>
+
+    <!-- Error Strings -->
+    <string name="error_title">Error</string>
+    <string name="no_network_body">No network detected.\nPlease reconnect and try again later</string>
+    <string name="general_error_body">An error has occurred.\nPlease try again later</string>
+
+    <string name="dialog_ok">OK</string>
+
+</resources>
