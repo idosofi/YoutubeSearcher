@@ -133,7 +133,7 @@ class SearchActivity : AppCompatActivity() {
         ErrorDialogGenerator.showDialog(this, errorID)
     }
 
-    fun onVideoClick(v: View) {
+    fun onContentClick(v: View) {
         val model = ViewModelProviders.of(this).get(ContentListViewModel::class.java)
 
         val isPlaylist = model.videoList.value!![mRecyclerView?.getChildAdapterPosition(v)!!].isPlaylist
